@@ -1,0 +1,27 @@
+<h2>Add New Member</h2>
+
+<%= form_for(@group_member  , :remote => true) do |f| %>
+  <% if @group_member.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@group_member.errors.count, "error") %> prohibited this group_member from being saved:</h3>
+
+      <ul>
+      <% @group_member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :group_id %>
+    <%= f.label "User name or Email id" %><br />
+    <%= text_field_tag :user_email %>
+  </div>
+  <div class="actions" style="margin: 20px 0px 0px -1px">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>
+
+
+<br/>

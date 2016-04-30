@@ -1,0 +1,7 @@
+if @success
+	page << "jQuery('#notice').html('#{@msg}').show();"
+	page << "hideMessage(jQuery('#notice'));"
+	page << "jQuery('#dialog').dialog('close');"
+else
+	page << "jQuery('#error').html('#{@error}').show();"
+end

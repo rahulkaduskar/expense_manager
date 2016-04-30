@@ -1,0 +1,27 @@
+<section id="services">
+  <div class="container">
+    <div class="row">
+      <h3>Listing groups</h3>
+
+      <table cellspacing="0" cellpadding="10" class="group_list">
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+
+      <% @groups.each do |group| %>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= link_to 'Show', group %> &nbsp;&nbsp;
+            <%= link_to 'Edit', edit_group_path(group) %> &nbsp;&nbsp; 
+            <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </table>
+
+      <br />
+
+      <%= link_to 'New Group', new_group_path %>
+    </div>
+  </div>
+</section>

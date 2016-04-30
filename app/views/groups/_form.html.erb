@@ -1,0 +1,32 @@
+<%= form_for(@group) do |group| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field"  style="width:200px">
+    <%= group.label :name %><br />
+    <%= group.text_field :name, {class: 'form-control'}%>
+  </div>
+  <%= group.fields_for(:group_members) do |member| %>
+    <div id ="members" class="field" style="width:200px">
+      <%= member.hidden_field :user_id %>
+      <%= member.label "Add member" %><br />
+      <%= text_field_tag :user_email, '',  {placeholder: 'User name or Email id', class: 'left form-control'} %>
+    </div>
+    <div style="padding-left: 20px;  float: left;">
+      <input id="addMember" value="Add member " class='btn btn-primary ' style='width: 110px;' />
+    </div>
+  <% end %>
+  <div class="separator">&nbsp;</div>
+  <div class="actions">
+    <%= group.submit 'Create', class:'btn btn-primary' %>
+  </div>
+<% end %>

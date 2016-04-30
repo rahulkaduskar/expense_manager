@@ -1,0 +1,88 @@
+<section id="services">
+  <div class="container">
+    <div class="row">
+      <div  class="">
+        <ul class='sub-menu tabs' style="margin-top:-10px;style="border-bottom: 1px solid #DFDFDF"">
+
+
+          <% if @group.present? %>
+
+          <li><%= link_to "members",{ controller: "group_members", :action => "index" } %> </li>
+          <li><%= link_to "Expense",{ controller: "transactions", :action =>"new", :group_id => @group.id,  :transaction_type =>Transaction::TRANSACTION_EXPENSE_TYPE }, {:class =>"dialog_link" , :title => "Expense"}%> </li>
+
+          <li><%= link_to "Payment",{ controller: "transactions", :action =>"new", :group_id => @group.id, :transaction_type =>Transaction::TRANSACTION_PAYMENT_TYPE }, {:class =>"dialog_link", :title => "Payment" }%> </li>
+
+          <% end %>
+        </ul>
+
+        <div id="total_expense_payment">
+          <table style="width:600px">
+            <tr>
+              <td>
+                <div> Total Expense:</div>
+                <div> <% total_expense = @total_paid_owed.present? ? @total_paid_owed.total/@members_count : 0  %>
+                  <%= total_expense %>
+                </div>
+              </td>
+              <td>
+                <div> Total paid:</div>
+                <div> <% total_paid = @total_paid.present? ?  @total_paid.total : 0 %>
+                  <%= total_paid %>
+                </div>
+              </td>
+              <td>
+                <div> Remaining balance to be paid: </div>
+                <div> <%= total_expense - total_paid  %> </div>
+              </td>
+            </tr>
+          </tr>
+         </table>
+
+        </div>
+        <div id="tab-data" style="border-top: 1px solid #DFDFDF">
+        <h3>Members of <%= @group.name %></h3>
+
+        <table>
+          <tr>
+            <th style="text-align:left">User</th>
+            <th style="text-align:left">Action</th>
+          </tr>
+
+          <% @group.group_members.each do |group_member| %>
+          <tr>
+            <td style="width: 200px"><%= group_member.user.name %></td>
+            <td><%= link_to 'Remove', group_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </table>
+
+        <br />
+        <li><%= link_to "Add member",{:controller => "group_members" , :action =>"new" , :group_id => @group.id}, {:class =>"dialog_link" , :title => "Add Member"}%> </li>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

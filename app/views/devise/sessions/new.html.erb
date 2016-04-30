@@ -1,0 +1,41 @@
+<section id="services">
+  <div class="container">
+      <div class="row">
+        <h3>Login or Sign In</h3>  
+        <div class="divider-line"></div>   
+        <div class="col-lg-12">
+          <div class="panel-body">
+            <div class="row">      
+             
+              <div class="left login-btns" style="max-width:300px">
+                <h4 class="left">
+                  Use your facebook or google accounts to log in:     
+                </h4>
+                <div class="clear">&nbsp;</div>
+                <%= link_to "<i class='fa fa-facebook' aria-hidden='true'>&nbsp;&nbsp;</i> facebook".html_safe, "", {class: 'btn  btn-primary'} %> 
+                <div class="clear">&nbsp;</div>
+                <%= link_to "<i class='fa fa-google-plus' aria-hidden='true'>&nbsp;&nbsp;</i> Google".html_safe, user_google_oauth2_omniauth_authorize_path, {class: 'btn btn-danger'} %>
+                <a href="#"></a>
+              </div>
+              <div class="left " style="max-width:300px;height:160px;">
+              <fieldset class="login-box">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <%= f.email_field :email, {autofocus: true, placeholder: 'Enter User Name', class: 'form-control input-md'} %>
+                  <div class="spacing">
+                    <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
+                    <small> Remember me</small>
+                  </div>
+                  <%= f.password_field :password, {autocomplete: "off", placeholder: 'Enter Password', class: 'form-control input-md'}  %>
+                  <div class="spacing">
+                    <%= link_to "<small> Forgot Password?</small>".html_safe, new_user_password_path %>
+                  </div>
+                  <%= f.submit "Sign In", {class: 'btn-primary right'}  %>                             
+                <% end %>      
+              </fieldset>   
+            </div>              
+          </div>                  
+      </div>
+  </div>
+</section>
+
+

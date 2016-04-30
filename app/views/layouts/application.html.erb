@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Manager</title>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand page-scroll" href="#page-top">Group Expense Manager</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if current_user.blank? %>            
+                      <li><%= link_to "Login", new_user_session_path %> </li>
+                      <li><%= link_to "Register User", new_user_registration_path %> </li>           
+                    <% else %>                  
+                      <li><%= link_to "Create groups", new_group_path %> </li>
+                      <li><%= link_to "My Groups", groups_path %> </li>
+                      <li class="dropdown">
+                        <%= link_to "#{current_user.name} <b class='caret'></b>".html_safe, new_user_registration_path, {class: 'dropdown-toggle', id: 'dropdownMenu1', 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true"} %> 
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+                        </ul>
+                      </li>
+                    <% end %>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <%= yield %>
+</body>
+</body>
+</html>
