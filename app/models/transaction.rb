@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-  
+
   TRANSACTION_PAYMENT_TYPE = "P"
   TRANSACTION_EXPENSE_TYPE = "E"
 

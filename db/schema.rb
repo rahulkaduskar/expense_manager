@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421090511) do
+ActiveRecord::Schema.define(version: 20160501054954) do
 
   create_table "group_members", force: :cascade do |t|
     t.integer  "group_id",   limit: 4
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20160421090511) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "user_id",    limit: 4
+    t.string   "name",                limit: 255
+    t.integer  "user_id",             limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_members_count", limit: 4
   end
 
   create_table "transactions", force: :cascade do |t|
