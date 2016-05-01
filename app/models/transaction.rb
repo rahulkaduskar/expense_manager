@@ -1,6 +1,5 @@
 class Transaction < ActiveRecord::Base
-  #attr_accessible :amount, :description, :transaction_type, :user_id, :group_id
-
+  
   TRANSACTION_PAYMENT_TYPE = "P"
   TRANSACTION_EXPENSE_TYPE = "E"
 

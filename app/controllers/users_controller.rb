@@ -12,10 +12,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    @total_paid_owed = Transaction.total_owed_paid.where(["transactions.transaction_type = ?", 
+      Transaction::TRANSACTION_EXPENSE_TYPE]).first
+    @total_paid = Transaction.where(["transactions.transaction_type = ? and paid_by = ?", 
+      Transaction::TRANSACTION_EXPENSE_TYPE, current_user.id]).select(" sum(amount) as total ").first
+    @members_count = 1
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @user }
+      format.json { render json: {user: @user , total_paid_owed: @total_paid_owed, total_paid: @total_paid}  }
     end
   end
 

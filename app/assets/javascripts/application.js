@@ -11,4 +11,4 @@
 // about supported directives.
 //
 //= require_tree .
-//= require_tree ../../../vendor/assets/javascripts/.
+//= require_driectory ../../../vendor/assets/javascripts/.
