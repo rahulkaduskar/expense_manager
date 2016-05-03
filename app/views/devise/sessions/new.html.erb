@@ -12,7 +12,7 @@
                   Use your facebook or google accounts to log in:     
                 </h4>
                 <div class="clear">&nbsp;</div>
-                <%= link_to "<i class='fa fa-facebook' aria-hidden='true'>&nbsp;&nbsp;</i> facebook".html_safe, "", {class: 'btn  btn-primary'} %> 
+                <%= link_to "<i class='fa fa-facebook' aria-hidden='true'>&nbsp;&nbsp;</i> facebook".html_safe, user_facebook_omniauth_authorize_path, {class: 'btn  btn-primary'} %> 
                 <div class="clear">&nbsp;</div>
                 <%= link_to "<i class='fa fa-google-plus' aria-hidden='true'>&nbsp;&nbsp;</i> Google".html_safe, user_google_oauth2_omniauth_authorize_path, {class: 'btn btn-danger'} %>
                 <a href="#"></a>

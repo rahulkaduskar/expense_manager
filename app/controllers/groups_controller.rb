@@ -86,6 +86,8 @@ class GroupsController < ApplicationController
   private
 
   def group_params(group_params)
-    group_params[:group].permit(:name, group_members_attributes: [:user_id])
+    group_params = group_params[:group].permit(:name, group_members_attributes: [:user_id])
+    group_params["group_members_attributes"].delete_if{|key,value| value["user_id"].blank?}
+    group_params
   end
 end

@@ -4,11 +4,24 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_google_oauth2(request.env["omniauth.auth"], current_user)
 
     if @user.persisted?
-      flash[:notice] = "devise.omniauth_callbacks.success"
+      flash[:notice] = "Google auth successfully done."
       sign_in_and_redirect @user, :event => :authentication
     else
       session["devise.google_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
   	end
   end
+
+  def facebook
+    @user = User.find_for_google_oauth2(request.env["omniauth.auth"], current_user)
+    if @user.persisted?
+      flash[:notice] = "Facebook auth successfully done."
+      sign_in_and_redirect @user, :event => :authentication
+    else
+      session["devise.google_data"] = request.env["omniauth.auth"]
+      redirect_to new_user_registration_url
+    end
+
+  end
+
 end

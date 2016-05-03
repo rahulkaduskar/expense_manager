@@ -268,4 +268,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.omniauth :google_oauth2, "278161755026-sg44h4bn8sr5r7n09rq0ab1el8smnc01.apps.googleusercontent.com", "i2VJEdBCtDSRpWBSX32kJ0L1", { access_type: "offline", approval_prompt: "" }
+  config.omniauth :facebook, "1710214772553111", "2d8f3d445e033a22101bcc2c4cea8a3e" 
+
+
 end

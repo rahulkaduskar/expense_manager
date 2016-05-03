@@ -1,6 +1,7 @@
 require 'factory_girl_rails'
 require 'support/factory_girl'
 require 'capybara/rspec'
+FactoryGirl.find_definitions
 # spec helper
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -14,5 +15,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
 
 end

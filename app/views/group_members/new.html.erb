@@ -1,4 +1,4 @@
-<h2>Add New Member</h2>
+
 
 <%= form_for(@group_member  , :remote => true) do |f| %>
   <% if @group_member.errors.any? %>
@@ -15,8 +15,8 @@
 
   <div class="field">
     <%= f.hidden_field :group_id %>
-    <%= f.label "User name or Email id" %><br />
-    <%= text_field_tag :user_email %>
+    <input id="typeahead-input" type="text" data-provide="typeahead" />
+    <%= f.hidden_field :user_id %>
   </div>
   <div class="actions" style="margin: 20px 0px 0px -1px">
     <%= f.submit "Add" %>

@@ -5,16 +5,17 @@ class Group < ActiveRecord::Base
 
   has_many :transactions
 
-  before_create :add_group_member
+  belongs_to :user
+
+  before_validation :add_creator_as_member, :if => Proc.new {|obj| obj.new_record?}
   
-  accepts_nested_attributes_for :group_members
+  accepts_nested_attributes_for :group_members, :reject_if => :all_blank
 
 
-  def add_group_member
+  def add_creator_as_member
   	group_member = GroupMember.new
     group_member.group_id = self.id
     group_member.user_id = self.user_id
-    binding.pry
     self.group_members << group_member
   end
 

@@ -2,8 +2,8 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe User, type: :model do
-   before :each do
-    @user = build(:user)
+  before :each do
+    @user = create(:user)
   end
 
   it "should be valid with a name and email" do
